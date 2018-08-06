@@ -1,4 +1,4 @@
-﻿namespace Insurance.WebApi4.Handlers
+﻿namespace Insurance.WebApi.Handlers
 {
     public static class AuthenticationResultHandler
     {

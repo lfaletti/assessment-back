@@ -1,5 +1,4 @@
-﻿using Insurance.Database.Contexts;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
 namespace Insurance.Database.Configuration
 {

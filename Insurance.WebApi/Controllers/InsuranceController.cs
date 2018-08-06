@@ -1,8 +1,12 @@
-﻿using Insurance.Services.Clients;
+﻿using Insurance.IServices.Clients;
+using Insurance.IServices.Models;
+using Insurance.Services.Clients;
+using System;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
 
-namespace Insurance.WebApi4.Controllers
+namespace Insurance.WebApi.Controllers
 {
     [RoutePrefix("api/insurance")]
     public class InsuranceController : ApiController
@@ -16,11 +20,46 @@ namespace Insurance.WebApi4.Controllers
 
         // GET: api/Insurance/Clients
         [Route("clients")]
+        [Authorize]
         public async Task<IHttpActionResult> GetClients()
         {
-            var clients = await  _clientService.GetAllAsync();
+            try
+            {
+                var clients = await _clientService.GetAllAsync();
 
-            return Ok(clients);
-        }   
+                if (clients != null)
+                {
+                    return Ok(clients);
+                }
+                return NotFound();
+
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+            }
+
+        }
+
+        [Route("clients/{id:int}")] 
+        [Authorize]
+        [ResponseType(typeof(Client))]
+        public async Task<IHttpActionResult> GetById(string id)
+        {
+            try
+            {
+                var client = await _clientService.GetByIdAsync(id);
+                
+                if (client != null)
+                {
+                    return Ok(client);
+                }
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+            }
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Insurance.WebApi4.Models.Authentication
+namespace Insurance.WebApi.Models.Authentication
 {
     public class RegistrationModel
     {

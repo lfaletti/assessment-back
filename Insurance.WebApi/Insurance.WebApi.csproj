@@ -203,9 +203,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Insurance.ApiProviders\Insurance.ApiProviders.csproj">
+      <Project>{205fe14e-ede3-4c48-8428-b563378b9422}</Project>
+      <Name>Insurance.ApiProviders</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Insurance.Database\Insurance.Database.csproj">
       <Project>{d1fbcd2e-0ee0-479a-af50-79a985d64aae}</Project>
       <Name>Insurance.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Insurance.IApiProviders\Insurance.IApiProviders.csproj">
+      <Project>{aa052e5e-831e-489c-bbb1-78a5f200e8f9}</Project>
+      <Name>Insurance.IApiProviders</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Insurance.IServices\Insurance.IServices.csproj">
+      <Project>{284aedb2-c5b0-4b8f-ada4-2ddb65f247ed}</Project>
+      <Name>Insurance.IServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\Insurance.Services\Insurance.Services.csproj">
       <Project>{3ADAC17F-7E3F-45C9-9DC7-998C09277554}</Project>

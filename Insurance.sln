@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insurance.Database", "Insur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insurance.WebApi", "Insurance.WebApi\Insurance.WebApi.csproj", "{A135787C-1B81-4556-A74A-8AAA5203F702}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insurance.IServices", "Insurance.IServices\Insurance.IServices.csproj", "{284AEDB2-C5B0-4B8F-ADA4-2DDB65F247ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insurance.IApiProviders", "Insurance.IApiProviders\Insurance.IApiProviders.csproj", "{AA052E5E-831E-489C-BBB1-78A5F200E8F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insurance.ApiProviders", "Insurance.ApiProviders\Insurance.ApiProviders.csproj", "{205FE14E-EDE3-4C48-8428-B563378B9422}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +33,18 @@ Global
 		{A135787C-1B81-4556-A74A-8AAA5203F702}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A135787C-1B81-4556-A74A-8AAA5203F702}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A135787C-1B81-4556-A74A-8AAA5203F702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{284AEDB2-C5B0-4B8F-ADA4-2DDB65F247ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{284AEDB2-C5B0-4B8F-ADA4-2DDB65F247ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{284AEDB2-C5B0-4B8F-ADA4-2DDB65F247ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{284AEDB2-C5B0-4B8F-ADA4-2DDB65F247ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA052E5E-831E-489C-BBB1-78A5F200E8F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA052E5E-831E-489C-BBB1-78A5F200E8F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA052E5E-831E-489C-BBB1-78A5F200E8F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA052E5E-831E-489C-BBB1-78A5F200E8F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{205FE14E-EDE3-4C48-8428-B563378B9422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{205FE14E-EDE3-4C48-8428-B563378B9422}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{205FE14E-EDE3-4C48-8428-B563378B9422}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{205FE14E-EDE3-4C48-8428-B563378B9422}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

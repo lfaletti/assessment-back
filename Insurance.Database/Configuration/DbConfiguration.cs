@@ -1,5 +1,4 @@
-﻿using Insurance.Database.Contexts;
-using System.Data.Entity.Migrations;
+﻿using System.Data.Entity.Migrations;
 
 namespace Insurance.Database.Configuration
 {

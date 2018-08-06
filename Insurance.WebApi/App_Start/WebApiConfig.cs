@@ -1,7 +1,7 @@
 ﻿using Insurance.WebApi.Models;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using Insurance.WebApi4;
+using Insurance.WebApi;
 
 namespace Insurance.WebApi
 {

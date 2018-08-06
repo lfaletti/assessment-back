@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Configuration;
-using Insurance.Database.Contexts;
+using Insurance.Database;
 using Insurance.Services.Authentication;
 using Insurance.WebApi.Identity;
 using Microsoft.Owin;

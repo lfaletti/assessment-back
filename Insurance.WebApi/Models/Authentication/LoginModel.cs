@@ -1,4 +1,4 @@
-﻿namespace Insurance.WebApi4.Models.Authentication
+﻿namespace Insurance.WebApi.Models.Authentication
 {
     public class LoginModel
     {

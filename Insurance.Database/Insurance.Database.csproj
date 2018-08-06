@@ -36,12 +36,14 @@
   <ItemGroup>
     <Compile Include="Configuration\DbConfiguration.cs" />
     <Compile Include="Configuration\Initializer.cs" />
-    <Compile Include="Contexts\InsuranceContext.cs" />
-    <Compile Include="InsuranceUsers\InsuranceUserManager.cs" />
-    <Compile Include="InsuranceUsers\InsuranceRoleManager.cs" />
-    <Compile Include="InsuranceUsers\InsuranceRoleStore..cs" />
-    <Compile Include="InsuranceUsers\InsuranceUserStore.cs" />
-    <Compile Include="InsuranceUsers\Interfaces\IInsuranceManager.cs" />
+    <Compile Include="InsuranceContext.cs" />
+    <Compile Include="IContext.cs" />
+    <Compile Include="Users\IInsuranceUserManager.cs" />
+    <Compile Include="Users\InsuranceUserManager.cs" />
+    <Compile Include="Roles\InsuranceRoleManager.cs" />
+    <Compile Include="Roles\InsuranceRoleStore..cs" />
+    <Compile Include="Users\InsuranceUserStore.cs" />
+    <Compile Include="Roles\IInsuranceRoleManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +92,7 @@
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

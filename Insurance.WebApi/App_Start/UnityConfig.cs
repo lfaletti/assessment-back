@@ -1,14 +1,17 @@
+using Insurance.ApiProviders.Clients;
+using Insurance.ApiProviders.Providers;
+using Insurance.IServices.Authentication;
+using Insurance.IServices.Clients;
+using Insurance.IServices.Models;
 using Insurance.Services.Authentication;
-using Insurance.Services.Authentications;
 using Insurance.Services.Clients;
-using Insurance.Services.Models;
+using Insurance.Services.Logging;
 using Insurance.Services.Policies;
-using Insurance.Services.Providers;
 using System.Web.Http;
 using Unity;
 using Unity.Injection;
 
-namespace Insurance.WebApi4
+namespace Insurance.WebApi
 {
     public static class UnityConfig
     {
@@ -17,6 +20,7 @@ namespace Insurance.WebApi4
 			var container = new UnityContainer();
 
             container.RegisterType<IAuthenticationService, AuthenticationService>();
+            container.RegisterType<ILogService, LogService>();
 
             container.RegisterType<IClientService, ClientService>(
                 new InjectionConstructor(new ClientDataProvider<Client, ClientCollection>("http://www.mocky.io/", "v2/5808862710000087232b75ac")));

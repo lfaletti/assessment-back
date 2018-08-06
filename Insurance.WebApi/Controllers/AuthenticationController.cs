@@ -1,16 +1,16 @@
-﻿using Insurance.Services.Authentication;
-using Insurance.WebApi4.Models.Authentication;
+﻿using Insurance.IServices.Authentication;
+using Insurance.WebApi.Models.Authentication;
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using System.Web.Http;
-namespace Insurance.WebApi4.Controllers
+namespace Insurance.WebApi.Controllers
 {
     [RoutePrefix("api/auth")]
     public class AuthenticationController : ApiController
     {
-        private AuthenticationService _authenticationService;
+        private IAuthenticationService _authenticationService;
 
-        public AuthenticationController(AuthenticationService authenticationService)
+        public AuthenticationController(IAuthenticationService authenticationService)
         {
             _authenticationService = authenticationService;
         }

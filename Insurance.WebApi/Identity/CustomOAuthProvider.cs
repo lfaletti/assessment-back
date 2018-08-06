@@ -1,10 +1,8 @@
 ﻿using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Insurance.Database.Contexts;
-using Insurance.Database.InsuranceUsers;
+using Insurance.Database;
 using Insurance.Services.Authentication;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;

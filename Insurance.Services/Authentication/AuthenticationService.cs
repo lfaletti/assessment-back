@@ -1,6 +1,7 @@
-﻿using Insurance.Database.Contexts;
-using Insurance.Database.InsuranceUsers;
-using Insurance.Services.Authentications;
+﻿using Insurance.Database;
+using Insurance.Database.Roles;
+using Insurance.Database.Users;
+using Insurance.IServices.Authentication;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -22,21 +23,17 @@ namespace Insurance.Services.Authentication
         }
 
         /// <summary>
-        /// Authenticates the user with the database and returns the Id 
+        /// Authenticates the user with the database 
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <returns></returns>
         public async Task<bool> Authenticate(string username, string password)
         {
             var user = _userManager.FindByNameAsync(username).Result;
 
             return await _userManager.CheckPasswordAsync(user, password);
-           
         }
 
         /// <summary>
-        /// 
+        /// Get roles
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>

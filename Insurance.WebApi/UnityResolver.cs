@@ -4,7 +4,7 @@ using System.Web.Http.Dependencies;
 using Unity;
 using Unity.Exceptions;
 
-namespace Insurance.WebApi4
+namespace Insurance.WebApi
 {
     public class UnityResolver : IDependencyResolver
     {
