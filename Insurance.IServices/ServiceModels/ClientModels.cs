@@ -3,9 +3,9 @@
 /// <summary>
 /// Models to match with External Api
 /// </summary>
-namespace Insurance.IServices.Models
+namespace Insurance.IServices.ServiceModels
 {
-    public class Client
+    public class ClientServiceModel
     {
         public string Id { get; set; }
 
@@ -14,10 +14,5 @@ namespace Insurance.IServices.Models
         public string Email { get; set; }
 
         public string Role { get; set; }
-    }
-
-    public class ClientCollection { 
-
-        public List<Client> Clients { get; set; }
     }
 }

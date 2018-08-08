@@ -1,14 +1,9 @@
 ﻿using System.Collections.Generic;
 
-/// <summary>
-/// Models to match with External Api
-/// </summary>
-namespace Insurance.IApiProviders.Models
+namespace Insurance.IServices.ViewModels
 {
-    public class ClientDTO
+    public class ClientViewModel
     {
-        public string Id { get; set; }
-
         public string Name { get; set; }
 
         public string Email { get; set; }

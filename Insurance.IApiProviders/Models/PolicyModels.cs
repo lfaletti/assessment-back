@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-
-/// <summary>
+﻿/// <summary>
 /// Models to match with External Api
 /// </summary>
 /// 
 namespace Insurance.IApiProviders.Models
 {
-    public class Policy
+    public class PolicyDTO
     {
         public string Id { get; set; }
 
@@ -20,10 +18,5 @@ namespace Insurance.IApiProviders.Models
 
         public string ClientId { get; set; }
 
-    }
-
-    public class PolicyCollection
-    {
-        public List<Policy> Policies { get; set; }
     }
 }

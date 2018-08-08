@@ -1,33 +1,41 @@
-﻿using Insurance.IApiProviders.Providers;
-using Insurance.IServices.Models;
+﻿using Insurance.IApiProviders.Clients;
+using Insurance.IApiProviders.Policies;
+using Insurance.IApiProviders.Providers;
+using Insurance.IServices.ServiceModels;
+using Insurance.IServices.ViewModels;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Insurance.Services.Policies
+namespace Insurance.IServices.Policies
 {
     public class PolicyService : IPolicyService
     {
-        IApiProvider<Policy, PolicyCollection> _provider;
+        IApiProvider<PolicyServiceModel> _provider;
+        IClientsProvider<ClientServiceModel> _clientsProvider;
 
-        public PolicyService(IApiProvider<Policy, PolicyCollection> policyDataProvider)
+        public PolicyService(IPoliciesProvider<PolicyServiceModel> policyDataProvider,
+            IClientsProvider<ClientServiceModel> clientsProvider)
         {
-            _provider = policyDataProvider;
+            this._provider = policyDataProvider;
+            this._clientsProvider = clientsProvider;
         }
 
-        public async Task<PolicyCollection> GetAllAsync()
+        public async Task<List<PolicyViewModel>> GetAllAsync()
         {
-            return await _provider.GetAllAsync();
+            return AutoMapper.Mapper.Map<List<PolicyViewModel>>(await _provider.GetAllAsync());
 
         }
 
-        public PolicyCollection GetByUsername(string userName)
+        public async Task<List<PolicyViewModel>> GetByUsernameAsync(string userName)
         {
-            var data = _provider.GetAllAsync().Result;
+            var clientData = _clientsProvider.GetByUserNameAsync(userName);
 
-            return new PolicyCollection()
-            {
-                Policies = data.Policies.Where(p => p.ClientId == userName).ToList()
-            };
+            var policyData = _provider.GetAllAsync().Result;
+
+            return AutoMapper.Mapper.Map<List<PolicyViewModel>>(policyData.Where(p => p.ClientId != null &&
+               clientData != null &&
+               p.ClientId == userName).ToList());
         }
     }
 }

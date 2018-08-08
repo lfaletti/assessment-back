@@ -65,8 +65,6 @@
     <Compile Include="Identity\CustomOAuthProvider.cs" />
     <Compile Include="Models\Authentication\LoginModel.cs" />
     <Compile Include="Models\Authentication\RegistrationModel.cs" />
-    <Compile Include="Models\Client.cs" />
-    <Compile Include="Models\Policy.cs" />
     <Compile Include="Models\PreflightRequestHandler.cs" />
     <Compile Include="App_Start\OAuthConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

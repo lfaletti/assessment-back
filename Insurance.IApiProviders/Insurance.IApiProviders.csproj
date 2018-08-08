@@ -44,10 +44,9 @@
     <Compile Include="IApiProvider.cs" />
     <Compile Include="Models\ClientModels.cs" />
     <Compile Include="Models\PolicyModels.cs" />
+    <Compile Include="Policies\IPoliciesProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Policies\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

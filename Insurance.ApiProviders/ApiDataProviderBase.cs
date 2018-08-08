@@ -7,10 +7,9 @@ namespace Insurance.ApiProviders
 {
     /// <summary>
     ///  A generic Base class to get insurance REST external resources
-    ///  Assumptions: response models map exactly to model defined in IServices projects
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ApiDataProviderBase<T, TCollection> : IApiProvider<T, TCollection>
+    public class ApiDataProviderBase<T>
     {
         private string _baseUrl;
         private string _resourcePath;
@@ -22,19 +21,13 @@ namespace Insurance.ApiProviders
         }
 
 
-        public async Task<TCollection> GetAllAsync()
+        protected async Task<string> GetResourceAsync()
         {
-            var data = await GetResourceAsync(_baseUrl + _resourcePath);
+            var url = _baseUrl + _resourcePath;
 
-            var clients = JsonConvert.DeserializeObject<TCollection>(data);
-
-            return clients;
-        }
-
-        private static async Task<string> GetResourceAsync(string url)
-        {
             using (var httpClient = new HttpClient())
             {
+                
                 return await httpClient.GetStringAsync(url)
                     .ConfigureAwait(false); ;
             }

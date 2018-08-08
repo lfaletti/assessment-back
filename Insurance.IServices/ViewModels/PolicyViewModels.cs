@@ -1,6 +1,12 @@
-﻿namespace Insurance.WebApi.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Insurance.IServices.ViewModels
 {
-    public class Policy
+    public class PolicyViewModel
     {
         public double AmountInsured { get; set; }
 

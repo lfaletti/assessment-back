@@ -56,12 +56,18 @@
     <Compile Include="IAuthentication\IAuthenticationService.cs" />
     <Compile Include="IClients\IClientService.cs" />
     <Compile Include="ILogging\ILogService.cs" />
-    <Compile Include="Models\ClientModels.cs" />
-    <Compile Include="Models\PolicyModels.cs" />
+    <Compile Include="IPolicies\IPolicyService.cs" />
+    <Compile Include="ServiceModels\ClientModels.cs" />
+    <Compile Include="ServiceModels\PolicyModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ClientViewModels.cs" />
+    <Compile Include="ViewModels\PolicyViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="IPolicies\" />
+    <ProjectReference Include="..\Insurance.IApiProviders\Insurance.IApiProviders.csproj">
+      <Project>{aa052e5e-831e-489c-bbb1-78a5f200e8f9}</Project>
+      <Name>Insurance.IApiProviders</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

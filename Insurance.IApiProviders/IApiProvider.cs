@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Insurance.IApiProviders.Providers
 {
@@ -7,9 +8,9 @@ namespace Insurance.IApiProviders.Providers
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="TCollection"></typeparam>
-    public interface IApiProvider<T, TCollection>
+    public interface IApiProvider<T>
     {
-        Task<TCollection> GetAllAsync();
+        Task<List<T>> GetAllAsync();
         Task<T> GetAsync(string id);
         Task AddAsync(T t);
     }

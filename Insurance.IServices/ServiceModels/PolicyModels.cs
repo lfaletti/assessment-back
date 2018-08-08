@@ -4,9 +4,9 @@
 /// Models to match with External Api
 /// </summary>
 /// 
-namespace Insurance.IServices.Models
+namespace Insurance.IServices.ServiceModels
 {
-    public class Policy
+    public class PolicyServiceModel
     {
         public string Id { get; set; }
 
@@ -22,8 +22,4 @@ namespace Insurance.IServices.Models
 
     }
 
-    public class PolicyCollection
-    {
-        public List<Policy> Policies { get; set; }
-    }
 }

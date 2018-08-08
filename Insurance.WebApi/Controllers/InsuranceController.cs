@@ -1,5 +1,5 @@
 ﻿using Insurance.IServices.Clients;
-using Insurance.IServices.Models;
+using Insurance.IServices.ServiceModels;
 using Insurance.Services.Clients;
 using System;
 using System.Threading.Tasks;
@@ -43,7 +43,7 @@ namespace Insurance.WebApi.Controllers
 
         [Route("clients/{id:int}")] 
         [Authorize]
-        [ResponseType(typeof(Client))]
+        [ResponseType(typeof(ClientServiceModel))]
         public async Task<IHttpActionResult> GetById(string id)
         {
             try

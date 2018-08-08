@@ -1,14 +1,16 @@
-﻿using Insurance.IServices.Models;
+﻿using Insurance.IServices.ServiceModels;
+using Insurance.IServices.ViewModels;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Insurance.IServices.Clients
 {
     public interface IClientService
     {
-        Task<ClientCollection> GetAllAsync();
+        Task<List<ClientViewModel>> GetAllAsync();
 
-        Task<Client> GetByIdAsync(string id);
-        Task<Client> GetByPolicyNumberAsync(string policyNumber);
-        Task<Client> GetByUserNameAsync(string userName);
+        Task<ClientViewModel> GetByIdAsync(string id);
+        Task<ClientViewModel> GetByUserAsync(string userName);
+        Task<ClientViewModel> GetByPolicyNumber(string policyNumber);
     }
 }
