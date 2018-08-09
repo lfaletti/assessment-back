@@ -17,13 +17,19 @@ namespace Insurance.WebApi.Identity
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
             var user = context.OwinContext.Get<InsuranceContext>().Users.FirstOrDefault(u => u.UserName == context.UserName);
+            if (user == null)
+            {
+                context.SetError("invalid_grant", "The user name or password is incorrect");
+                context.Rejected();
+                return Task.FromResult<string>("The user name or password is incorrect");
+            }
 
             var loginResult =  context.OwinContext.Get<AuthenticationService>().Authenticate(user.UserName, context.Password).Result;
             if (!loginResult)
             {
                 context.SetError("invalid_grant", "The user name or password is incorrect");
                 context.Rejected();
-                return Task.FromResult<object>(null);
+                return Task.FromResult<string>("The user name or password is incorrect");
             }
 
             var ticket = new AuthenticationTicket(SetClaimsIdentity(context, user), new AuthenticationProperties());

@@ -20,7 +20,7 @@ namespace Insurance.WebApi.Controllers
 
         // GET: api/Insurance/Clients
         [Route("")]
-        [Authorize]
+        [Authorize(Roles = "admin,user")]
         public async Task<IHttpActionResult> Get()
         {
             try
@@ -43,7 +43,7 @@ namespace Insurance.WebApi.Controllers
         }
 
         [Route("{id}")]
-        [Authorize]
+        [Authorize(Roles = "admin,user")]
         [ResponseType(typeof(ClientServiceModel))]
         public async Task<IHttpActionResult> GetById(string id)
         {
@@ -65,7 +65,7 @@ namespace Insurance.WebApi.Controllers
         }
 
         [Route("name/{name}")]
-        [Authorize]
+        [Authorize(Roles = "admin,user")]
         [ResponseType(typeof(ClientServiceModel))]
         public async Task<IHttpActionResult> GetByName(string name)
         {
@@ -87,7 +87,7 @@ namespace Insurance.WebApi.Controllers
         }
 
         [Route("policies/{policyId}")]
-        [AllowAnonymous]
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(ClientServiceModel))]
         public async Task<IHttpActionResult> GetByPolicyNumber(string policyId)
         {

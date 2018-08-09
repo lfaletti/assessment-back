@@ -19,7 +19,7 @@ namespace Insurance.WebApi4.Controllers
         }
 
         [Route("{username}")]
-        [Authorize]
+        [Authorize(Roles = "admin,user")]
         [ResponseType(typeof(PolicyServiceModel))]
         public async Task<IHttpActionResult> GetByUserName(string username)
         {
