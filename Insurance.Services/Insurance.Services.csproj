@@ -134,7 +134,7 @@
   <ItemGroup>
     <Compile Include="Authentication\AuthenticationService.cs" />
     <Compile Include="Logging\LogService.cs" />
-    <Compile Include="Services\Policies\PolicyService.cs" />
+    <Compile Include="Policies\PolicyService.cs" />
     <Compile Include="Services\Clients\ClientService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

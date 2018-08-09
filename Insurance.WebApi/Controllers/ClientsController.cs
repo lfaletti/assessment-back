@@ -8,20 +8,20 @@ using System.Web.Http.Description;
 
 namespace Insurance.WebApi.Controllers
 {
-    [RoutePrefix("api/insurance")]
-    public class InsuranceController : ApiController
+    [RoutePrefix("api/insurance/clients")]
+    public class ClientsController : ApiController
     {
-        public IClientService _clientService;
+        private IClientService _clientService;
 
-        public InsuranceController(IClientService clientService)
+        public ClientsController(IClientService clientService)
         {
             _clientService = clientService;
         }
 
         // GET: api/Insurance/Clients
-        [Route("clients")]
+        [Route("")]
         [Authorize]
-        public async Task<IHttpActionResult> GetClients()
+        public async Task<IHttpActionResult> Get()
         {
             try
             {
@@ -41,7 +41,7 @@ namespace Insurance.WebApi.Controllers
 
         }
 
-        [Route("clients/{id:int}")] 
+        [Route("{id}")]
         [Authorize]
         [ResponseType(typeof(ClientServiceModel))]
         public async Task<IHttpActionResult> GetById(string id)
@@ -49,7 +49,28 @@ namespace Insurance.WebApi.Controllers
             try
             {
                 var client = await _clientService.GetByIdAsync(id);
-                
+
+                if (client != null)
+                {
+                    return Ok(client);
+                }
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+            }
+        }
+
+        [Route("name/{name}")]
+        [Authorize]
+        [ResponseType(typeof(ClientServiceModel))]
+        public async Task<IHttpActionResult> GetByName(string name)
+        {
+            try
+            {
+                var client = await _clientService.GetByUserAsync(name);
+
                 if (client != null)
                 {
                     return Ok(client);

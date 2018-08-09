@@ -12,13 +12,23 @@ namespace Insurance.ApiProviders.Providers
     {
         public PoliciesProvider(string baseUrl, string resourcePath) : base(baseUrl, resourcePath) { }
 
+        public Task AddAsync(PolicyServiceModel t)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<List<PolicyServiceModel>> GetAllAsync()
         {
             var data = await base.GetResourceAsync();
 
-            var clients = JsonConvert.DeserializeObject<List<ClientDTO>>(data);
+            var policies = JsonConvert.DeserializeObject<PolicyResponse<PolicyDTO>>(data);
 
-            return AutoMapper.Mapper.Map<List<PolicyServiceModel>>(clients);
+            return AutoMapper.Mapper.Map<List<PolicyServiceModel>>(policies.Policies);
+        }
+
+        public Task<PolicyServiceModel> GetAsync(string id)
+        {
+            throw new System.NotImplementedException();
         }
 
         /// <summary>
@@ -29,7 +39,7 @@ namespace Insurance.ApiProviders.Providers
         public async Task<List<PolicyServiceModel>> GetPoliciesByClientId(string clientId)
         {
             // Without REST operation to get policies by ClientId, get all policies from service and filter out 
-            var allPolicies = this.GetAllAsync().Result;
+            var allPolicies = await this.GetAllAsync().ConfigureAwait(false);
 
             if (allPolicies != null)
             {

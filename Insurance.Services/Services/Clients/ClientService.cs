@@ -33,9 +33,9 @@ namespace Insurance.Services.Clients
             throw new System.NotImplementedException();
         }
 
-        public Task<ClientViewModel> GetByUserAsync(string userName)
+        public async Task<ClientViewModel> GetByUserAsync(string userName)
         {
-            throw new System.NotImplementedException();
+            return AutoMapper.Mapper.Map<ClientViewModel>(await _provider.GetByUserNameAsync(userName));
         }
     }
 }

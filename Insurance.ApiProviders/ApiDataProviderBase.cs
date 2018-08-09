@@ -32,15 +32,5 @@ namespace Insurance.ApiProviders
                     .ConfigureAwait(false); ;
             }
         }
-
-        public Task<T> GetAsync(string id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task AddAsync(T t)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

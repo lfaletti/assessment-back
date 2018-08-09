@@ -11,31 +11,31 @@ namespace Insurance.IServices.Policies
 {
     public class PolicyService : IPolicyService
     {
-        IApiProvider<PolicyServiceModel> _provider;
+        IPoliciesProvider<PolicyServiceModel> _policyProvider;
         IClientsProvider<ClientServiceModel> _clientsProvider;
 
         public PolicyService(IPoliciesProvider<PolicyServiceModel> policyDataProvider,
             IClientsProvider<ClientServiceModel> clientsProvider)
         {
-            this._provider = policyDataProvider;
+            this._policyProvider = policyDataProvider;
             this._clientsProvider = clientsProvider;
         }
 
         public async Task<List<PolicyViewModel>> GetAllAsync()
         {
-            return AutoMapper.Mapper.Map<List<PolicyViewModel>>(await _provider.GetAllAsync());
+            return AutoMapper.Mapper.Map<List<PolicyViewModel>>(await _policyProvider.GetAllAsync());
 
         }
 
         public async Task<List<PolicyViewModel>> GetByUsernameAsync(string userName)
         {
-            var clientData = _clientsProvider.GetByUserNameAsync(userName);
+            // Get id of the client with username
+            var clientData = await _clientsProvider.GetByUserNameAsync(userName).ConfigureAwait(false);
 
-            var policyData = _provider.GetAllAsync().Result;
+            // Get from policy provider
+            var policyData = await _policyProvider.GetPoliciesByClientId(clientData.Id);
 
-            return AutoMapper.Mapper.Map<List<PolicyViewModel>>(policyData.Where(p => p.ClientId != null &&
-               clientData != null &&
-               p.ClientId == userName).ToList());
+            return AutoMapper.Mapper.Map<List<PolicyViewModel>>(policyData);
         }
     }
 }

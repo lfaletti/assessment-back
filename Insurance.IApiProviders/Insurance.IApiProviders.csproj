@@ -42,8 +42,10 @@
   <ItemGroup>
     <Compile Include="Clients\IClientsProvider.cs" />
     <Compile Include="IApiProvider.cs" />
-    <Compile Include="Models\ClientModels.cs" />
-    <Compile Include="Models\PolicyModels.cs" />
+    <Compile Include="Models\ClientDTO.cs" />
+    <Compile Include="Models\ClientResponse.cs" />
+    <Compile Include="Models\PolicyDTO.cs" />
+    <Compile Include="Models\PolicyResponse.cs" />
     <Compile Include="Policies\IPoliciesProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
