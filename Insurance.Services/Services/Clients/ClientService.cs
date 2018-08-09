@@ -1,4 +1,5 @@
 ﻿using Insurance.IApiProviders.Clients;
+using Insurance.IApiProviders.Policies;
 using Insurance.IApiProviders.Providers;
 using Insurance.IServices.Clients;
 using Insurance.IServices.ServiceModels;
@@ -10,32 +11,38 @@ namespace Insurance.Services.Clients
 {
     public class ClientService: IClientService
     {
-        IClientsProvider<ClientServiceModel> _provider;
+        IClientsProvider<ClientServiceModel> _clientProvider;
+        IPoliciesProvider<PolicyServiceModel> _policyProvider;
 
-        public ClientService(IClientsProvider<ClientServiceModel> clientDataProvider)
+        public ClientService(
+            IClientsProvider<ClientServiceModel> clientDataProvider,
+            IPoliciesProvider<PolicyServiceModel> policyProvider)
         {
-            _provider = clientDataProvider;
+            _clientProvider = clientDataProvider;
+            _policyProvider = policyProvider;
         }
 
         public async Task<List<ClientViewModel>> GetAllAsync()
         {
-            return AutoMapper.Mapper.Map<List<ClientViewModel>>(await _provider.GetAllAsync());
+            return AutoMapper.Mapper.Map<List<ClientViewModel>>(await _clientProvider.GetAllAsync());
             
         }
 
         public async Task<ClientViewModel> GetByIdAsync(string id)
         {
-            return AutoMapper.Mapper.Map <ClientViewModel> (await _provider.GetAsync(id));
+            return AutoMapper.Mapper.Map <ClientViewModel> (await _clientProvider.GetAsync(id));
         }
 
         public async Task<ClientViewModel> GetByPolicyNumber(string policyNumber)
         {
-            throw new System.NotImplementedException();
+            var policy = await _policyProvider.GetAsync(policyNumber).ConfigureAwait(false);
+
+            return AutoMapper.Mapper.Map<ClientViewModel>(await _clientProvider.GetAsync(policy.ClientId));
         }
 
         public async Task<ClientViewModel> GetByUserAsync(string userName)
         {
-            return AutoMapper.Mapper.Map<ClientViewModel>(await _provider.GetByUserNameAsync(userName));
+            return AutoMapper.Mapper.Map<ClientViewModel>(await _clientProvider.GetByUserNameAsync(userName));
         }
     }
 }

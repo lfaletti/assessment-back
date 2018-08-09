@@ -37,8 +37,8 @@
     <Compile Include="Configuration\DbConfiguration.cs" />
     <Compile Include="Configuration\Initializer.cs" />
     <Compile Include="InsuranceContext.cs" />
-    <Compile Include="IContext.cs" />
     <Compile Include="Users\IInsuranceUserManager.cs" />
+    <Compile Include="Users\IInsuranceUserStore.cs" />
     <Compile Include="Users\InsuranceUserManager.cs" />
     <Compile Include="Roles\InsuranceRoleManager.cs" />
     <Compile Include="Roles\InsuranceRoleStore..cs" />

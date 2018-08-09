@@ -2,7 +2,7 @@
 
 namespace Insurance.Database
 {
-    public class InsuranceContext : IdentityDbContext, IContext
+    public class InsuranceContext : IdentityDbContext
     {
 
     }

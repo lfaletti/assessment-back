@@ -2,6 +2,7 @@
 using Insurance.Database.Roles;
 using Insurance.Database.Users;
 using Insurance.IServices.Authentication;
+using Insurance.IServices.Clients;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -13,13 +14,16 @@ namespace Insurance.Services.Authentication
 {
     public class AuthenticationService : IAuthenticationService, IDisposable
     {
-        private InsuranceUserManager _userManager;
-        private InsuranceRoleManager _roleManager;
+        private IInsuranceUserManager<IdentityUser,string> _userManager;
+        private IInsuranceRoleManager _roleManager;
+        private IClientService _clientService;
 
-        public AuthenticationService(InsuranceContext dbContext)
+        public AuthenticationService(IClientService clientService, IInsuranceUserManager<IdentityUser, string> userManager,
+            IInsuranceRoleManager roleManager)
         {
-            _userManager = new InsuranceUserManager(dbContext);
-            _roleManager = new InsuranceRoleManager(dbContext);
+            _userManager = userManager;
+            _roleManager = roleManager;
+            _clientService = clientService;
         }
 
         /// <summary>
@@ -59,9 +63,28 @@ namespace Insurance.Services.Authentication
                 await _roleManager.CreateAsync(role);
             }
 
+            if (!_roleManager.RoleExists("guest"))
+            {
+
+                var role = new IdentityRole();
+                role.Name = "guest";
+
+                await _roleManager.CreateAsync(role);
+            }
+
             IdentityResult result = await _userManager.CreateAsync(user, password);
 
-            await _userManager.AddToRoleAsync(user.Id, "admin");
+            // If user registering is from external add its role, else add admin role
+            var externalUser = await _clientService.GetByUserAsync(user.UserName).ConfigureAwait(false);
+            if (externalUser != null)
+            {
+                await _userManager.AddToRoleAsync(user.Id, externalUser.Role);
+            }
+            else
+            {
+                await _userManager.AddToRoleAsync(user.Id, "guest");
+            }
+            
             return result;
         }
 

@@ -1,6 +1,6 @@
 ﻿using Insurance.IServices.Clients;
 using Insurance.IServices.ServiceModels;
-using Insurance.Services.Clients;
+using Insurance.WebApi.Handlers;
 using System;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -36,6 +36,7 @@ namespace Insurance.WebApi.Controllers
             }
             catch (Exception ex)
             {
+                WebApiExceptionHandler.HandleException(ex);
                 return NotFound();
             }
 
@@ -58,6 +59,7 @@ namespace Insurance.WebApi.Controllers
             }
             catch (Exception ex)
             {
+                WebApiExceptionHandler.HandleException(ex);
                 return NotFound();
             }
         }
@@ -79,6 +81,29 @@ namespace Insurance.WebApi.Controllers
             }
             catch (Exception ex)
             {
+                WebApiExceptionHandler.HandleException(ex);
+                return NotFound();
+            }
+        }
+
+        [Route("policies/{policyId}")]
+        [AllowAnonymous]
+        [ResponseType(typeof(ClientServiceModel))]
+        public async Task<IHttpActionResult> GetByPolicyNumber(string policyId)
+        {
+            try
+            {
+                var client = await _clientService.GetByPolicyNumber(policyId); 
+
+                if (client != null)
+                {
+                    return Ok(client);
+                }
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                WebApiExceptionHandler.HandleException(ex);
                 return NotFound();
             }
         }

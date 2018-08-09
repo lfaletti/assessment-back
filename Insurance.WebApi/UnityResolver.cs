@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Insurance.WebApi.Handlers;
+using System;
 using System.Collections.Generic;
 using System.Web.Http.Dependencies;
 using Unity;
@@ -27,6 +28,7 @@ namespace Insurance.WebApi
             }
             catch (ResolutionFailedException ex)
             {
+                WebApiExceptionHandler.HandleException(ex);
                 return null;
             }
         }

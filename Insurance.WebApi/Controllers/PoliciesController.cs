@@ -1,5 +1,6 @@
 ﻿using Insurance.IServices.Policies;
 using Insurance.IServices.ServiceModels;
+using Insurance.WebApi.Handlers;
 using System;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -34,10 +35,10 @@ namespace Insurance.WebApi4.Controllers
             }
             catch (Exception ex)
             {
+                WebApiExceptionHandler.HandleException(ex);
                 return NotFound();
             }
         }
-
 
     }
 }

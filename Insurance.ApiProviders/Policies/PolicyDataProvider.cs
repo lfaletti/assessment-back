@@ -5,6 +5,7 @@ using System.Linq;
 using Insurance.IServices.ServiceModels;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System;
 
 namespace Insurance.ApiProviders.Providers
 {
@@ -19,16 +20,32 @@ namespace Insurance.ApiProviders.Providers
 
         public async Task<List<PolicyServiceModel>> GetAllAsync()
         {
-            var data = await base.GetResourceAsync();
+            try
+            {
+                var data = await base.GetResourceAsync();
 
-            var policies = JsonConvert.DeserializeObject<PolicyResponse<PolicyDTO>>(data);
+                var policies = JsonConvert.DeserializeObject<PolicyResponse<PolicyDTO>>(data);
 
-            return AutoMapper.Mapper.Map<List<PolicyServiceModel>>(policies.Policies);
+                return AutoMapper.Mapper.Map<List<PolicyServiceModel>>(policies.Policies);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
-        public Task<PolicyServiceModel> GetAsync(string id)
+        public async Task<PolicyServiceModel> GetAsync(string id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var result = await this.GetAllAsync().ConfigureAwait(false);
+
+                return result.Where(c => c.Id != null && c.Id == id).SingleOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /// <summary>
@@ -38,18 +55,21 @@ namespace Insurance.ApiProviders.Providers
         /// <returns></returns>
         public async Task<List<PolicyServiceModel>> GetPoliciesByClientId(string clientId)
         {
-            // Without REST operation to get policies by ClientId, get all policies from service and filter out 
-            var allPolicies = await this.GetAllAsync().ConfigureAwait(false);
-
-            if (allPolicies != null)
+            try
             {
+                // Without REST operation to get policies by ClientId, get all policies from service and filter out 
+                var allPolicies = await this.GetAllAsync().ConfigureAwait(false);
+
                 var policies = new List<PolicyServiceModel>();
 
                 policies.AddRange(allPolicies.Where(p => p.ClientId != null && p.ClientId == clientId).ToList());
 
                 return policies;
             }
-            return null;
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

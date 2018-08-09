@@ -73,10 +73,8 @@ namespace Insurance.WebApi.Controllers
                 {
                     return BadRequest();
                 }
-
-                return Ok();
             }
-            return null;
+            return Ok();
         }
 
     }

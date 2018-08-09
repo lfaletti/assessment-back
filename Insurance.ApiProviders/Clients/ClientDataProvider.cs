@@ -41,7 +41,6 @@ namespace Insurance.ApiProviders.Clients
             }
         }
 
-
         /// <summary>
         /// Query service for clients by username
         /// </summary>
