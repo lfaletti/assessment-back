@@ -1,4 +1,4 @@
-# assessment-back
+# Backend exercise for "Insurance Services"
 
 Developed with Visual Studio 2017.
 
