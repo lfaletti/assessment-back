@@ -1,7 +1,11 @@
-# Backend exercise for Insurance Services
+# Backend example for Insurance Services
 
 Developed with Visual Studio 2017.
 
 ## Compile and Run ##
 
-Compile the solution, wait for the nuget packages to install and run "Insurance WebApi".
+1) Solution -> Restore Nuget Paclages.
+2) Set as startup project "Insurance WebApi".
+3) Run/Debug
+
+Wait for database intialization on the first registration and voila!
