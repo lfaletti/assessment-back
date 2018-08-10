@@ -1,7 +1,6 @@
-﻿using Insurance.WebApi.Models;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Http.Cors;
-using Insurance.WebApi;
+using Insurance.WebApi.Models;
 
 namespace Insurance.WebApi
 {
@@ -20,9 +19,9 @@ namespace Insurance.WebApi
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                "DefaultApi",
+                "api/{controller}/{id}",
+                new {id = RouteParameter.Optional}
             );
         }
     }

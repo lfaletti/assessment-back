@@ -1,9 +1,10 @@
 ﻿using System;
+using Insurance.IServices.ILogging;
 
 namespace Insurance.Services.Logging
 {
     /// <summary>
-    /// Implement some logging...
+    ///     Implement some logging...
     /// </summary>
     public class LogService : ILogService
     {

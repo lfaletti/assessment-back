@@ -1,17 +1,20 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
 using Insurance.IApiProviders.Clients;
 using Insurance.IApiProviders.Models;
-using System.Linq;
-using System;
-using Newtonsoft.Json;
 using Insurance.IServices.ServiceModels;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Insurance.ApiProviders.Clients
 {
     public class ClientDataProvider<T> : ApiDataProviderBase<ClientServiceModel>, IClientsProvider<ClientServiceModel>
     {
-        public ClientDataProvider(string baseUrl, string resourcePath) : base(baseUrl, resourcePath) { }
+        public ClientDataProvider(string baseUrl, string resourcePath) : base(baseUrl, resourcePath)
+        {
+        }
 
         public Task AddAsync(ClientServiceModel t)
         {
@@ -20,20 +23,20 @@ namespace Insurance.ApiProviders.Clients
 
         public async Task<List<ClientServiceModel>> GetAllAsync()
         {
-            var data = await base.GetResourceAsync();
+            var data = await GetResourceAsync();
 
             var response = JsonConvert.DeserializeObject<ClientResponse<ClientDTO>>(data);
 
-            return AutoMapper.Mapper.Map<List<ClientServiceModel>>(response.Clients);
+            return Mapper.Map<List<ClientServiceModel>>(response.Clients);
         }
 
         public async Task<ClientServiceModel> GetAsync(string id)
         {
             try
             {
-                var result = await this.GetAllAsync().ConfigureAwait(false);
+                var result = await GetAllAsync().ConfigureAwait(false);
 
-                return result.Where(c => c.Id != null && c.Id== id).SingleOrDefault();
+                return result.Where(c => c.Id != null && c.Id == id).SingleOrDefault();
             }
             catch (Exception ex)
             {
@@ -42,7 +45,7 @@ namespace Insurance.ApiProviders.Clients
         }
 
         /// <summary>
-        /// Query service for clients by username
+        ///     Query service for clients by username
         /// </summary>
         /// <param name="userName"></param>
         /// <returns></returns>
@@ -51,7 +54,7 @@ namespace Insurance.ApiProviders.Clients
             try
             {
                 // External Api doesn't support get by username, get all in-memory and then filter
-                var result = await this.GetAllAsync().ConfigureAwait(false);
+                var result = await GetAllAsync().ConfigureAwait(false);
 
                 return result.Where(c => c.Name != null && c.Name == userName).SingleOrDefault();
             }

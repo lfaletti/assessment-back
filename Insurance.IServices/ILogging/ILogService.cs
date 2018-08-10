@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Insurance.Services.Logging
+namespace Insurance.IServices.ILogging
 {
     public interface ILogService
     {

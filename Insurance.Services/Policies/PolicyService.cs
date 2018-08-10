@@ -1,30 +1,29 @@
-﻿using Insurance.IApiProviders.Clients;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
+using Insurance.IApiProviders.Clients;
 using Insurance.IApiProviders.Policies;
-using Insurance.IApiProviders.Providers;
+using Insurance.IServices.IPolicies;
 using Insurance.IServices.ServiceModels;
 using Insurance.IServices.ViewModels;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Insurance.IServices.Policies
+namespace Insurance.Services.Policies
 {
     public class PolicyService : IPolicyService
     {
-        IPoliciesProvider<PolicyServiceModel> _policyProvider;
-        IClientsProvider<ClientServiceModel> _clientsProvider;
+        private readonly IClientsProvider<ClientServiceModel> _clientsProvider;
+        private readonly IPoliciesProvider<PolicyServiceModel> _policyProvider;
 
         public PolicyService(IPoliciesProvider<PolicyServiceModel> policyDataProvider,
             IClientsProvider<ClientServiceModel> clientsProvider)
         {
-            this._policyProvider = policyDataProvider;
-            this._clientsProvider = clientsProvider;
+            _policyProvider = policyDataProvider;
+            _clientsProvider = clientsProvider;
         }
 
         public async Task<List<PolicyViewModel>> GetAllAsync()
         {
-            return AutoMapper.Mapper.Map<List<PolicyViewModel>>(await _policyProvider.GetAllAsync());
-
+            return Mapper.Map<List<PolicyViewModel>>(await _policyProvider.GetAllAsync());
         }
 
         public async Task<List<PolicyViewModel>> GetByUsernameAsync(string userName)
@@ -35,7 +34,7 @@ namespace Insurance.IServices.Policies
             // Get from policy provider
             var policyData = await _policyProvider.GetPoliciesByClientId(clientData.Id);
 
-            return AutoMapper.Mapper.Map<List<PolicyViewModel>>(policyData);
+            return Mapper.Map<List<PolicyViewModel>>(policyData);
         }
     }
 }

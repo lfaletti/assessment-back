@@ -1,17 +1,17 @@
-﻿using Insurance.IServices.Clients;
-using Insurance.IServices.ServiceModels;
-using Insurance.WebApi.Handlers;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Insurance.IServices.IClients;
+using Insurance.IServices.ServiceModels;
+using Insurance.WebApi.Handlers;
 
 namespace Insurance.WebApi.Controllers
 {
     [RoutePrefix("api/insurance/clients")]
     public class ClientsController : ApiController
     {
-        private IClientService _clientService;
+        private readonly IClientService _clientService;
 
         public ClientsController(IClientService clientService)
         {
@@ -27,19 +27,14 @@ namespace Insurance.WebApi.Controllers
             {
                 var clients = await _clientService.GetAllAsync();
 
-                if (clients != null)
-                {
-                    return Ok(clients);
-                }
+                if (clients != null) return Ok(clients);
                 return NotFound();
-
             }
             catch (Exception ex)
             {
                 WebApiExceptionHandler.HandleException(ex);
                 return NotFound();
             }
-
         }
 
         [Route("{id}")]
@@ -51,10 +46,7 @@ namespace Insurance.WebApi.Controllers
             {
                 var client = await _clientService.GetByIdAsync(id);
 
-                if (client != null)
-                {
-                    return Ok(client);
-                }
+                if (client != null) return Ok(client);
                 return NotFound();
             }
             catch (Exception ex)
@@ -73,10 +65,7 @@ namespace Insurance.WebApi.Controllers
             {
                 var client = await _clientService.GetByUserAsync(name);
 
-                if (client != null)
-                {
-                    return Ok(client);
-                }
+                if (client != null) return Ok(client);
                 return NotFound();
             }
             catch (Exception ex)
@@ -93,12 +82,9 @@ namespace Insurance.WebApi.Controllers
         {
             try
             {
-                var client = await _clientService.GetByPolicyNumber(policyId); 
+                var client = await _clientService.GetByPolicyNumber(policyId);
 
-                if (client != null)
-                {
-                    return Ok(client);
-                }
+                if (client != null) return Ok(client);
                 return NotFound();
             }
             catch (Exception ex)

@@ -1,24 +1,24 @@
-﻿using Insurance.Database;
-using Insurance.Database.Roles;
-using Insurance.Database.Users;
-using Insurance.IServices.Authentication;
-using Insurance.IServices.Clients;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Insurance.Database.Roles;
+using Insurance.Database.Users;
+using Insurance.IServices.IAuthentication;
+using Insurance.IServices.IClients;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Insurance.Services.Authentication
 {
     public class AuthenticationService : IAuthenticationService, IDisposable
     {
-        private IInsuranceUserManager<IdentityUser,string> _userManager;
-        private IInsuranceRoleManager _roleManager;
-        private IClientService _clientService;
+        private readonly IClientService _clientService;
+        private readonly IInsuranceRoleManager _roleManager;
+        private readonly IInsuranceUserManager<IdentityUser, string> _userManager;
 
-        public AuthenticationService(IClientService clientService, IInsuranceUserManager<IdentityUser, string> userManager,
+        public AuthenticationService(IClientService clientService,
+            IInsuranceUserManager<IdentityUser, string> userManager,
             IInsuranceRoleManager roleManager)
         {
             _userManager = userManager;
@@ -27,7 +27,7 @@ namespace Insurance.Services.Authentication
         }
 
         /// <summary>
-        /// Authenticates the user with the database 
+        ///     Authenticates the user with the database
         /// </summary>
         public async Task<bool> Authenticate(string username, string password)
         {
@@ -36,27 +36,12 @@ namespace Insurance.Services.Authentication
             return await _userManager.CheckPasswordAsync(user, password);
         }
 
-        /// <summary>
-        /// Get roles
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        public async Task<List<string>> GetRoles(string userId)
-        {
-            return _userManager.GetRoles(userId).ToList();
-        }
-
-        public void Dispose()
-        {
-        }
-
         public async Task<IdentityResult> Register(string userName, string password)
         {
-            var user = new IdentityUser() { UserName = userName, Email = ""};
+            var user = new IdentityUser {UserName = userName, Email = ""};
 
             if (!_roleManager.RoleExists("admin"))
             {
-
                 var role = new IdentityRole();
                 role.Name = "admin";
 
@@ -65,32 +50,41 @@ namespace Insurance.Services.Authentication
 
             if (!_roleManager.RoleExists("guest"))
             {
-
                 var role = new IdentityRole();
                 role.Name = "guest";
 
                 await _roleManager.CreateAsync(role);
             }
 
-            IdentityResult result = await _userManager.CreateAsync(user, password);
+            var result = await _userManager.CreateAsync(user, password);
 
             // If user registering is from external add its role, else add admin role
             var externalUser = await _clientService.GetByUserAsync(user.UserName).ConfigureAwait(false);
             if (externalUser != null)
-            {
                 await _userManager.AddToRoleAsync(user.Id, externalUser.Role);
-            }
             else
-            {
                 await _userManager.AddToRoleAsync(user.Id, "guest");
-            }
-            
+
             return result;
         }
 
         public async Task<List<string>> GetAllUsers()
         {
             return _userManager.Users.Select(u => u.UserName).ToList();
+        }
+
+        public void Dispose()
+        {
+        }
+
+        /// <summary>
+        ///     Get roles
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public async Task<List<string>> GetRoles(string userId)
+        {
+            return _userManager.GetRoles(userId).ToList();
         }
     }
 }

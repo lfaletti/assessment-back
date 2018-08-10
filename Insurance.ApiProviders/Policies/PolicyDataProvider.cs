@@ -1,32 +1,35 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
 using Insurance.IApiProviders.Models;
 using Insurance.IApiProviders.Policies;
-using System.Linq;
 using Insurance.IServices.ServiceModels;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System;
 
-namespace Insurance.ApiProviders.Providers
+namespace Insurance.ApiProviders.Policies
 {
     public class PoliciesProvider<T> : ApiDataProviderBase<PolicyServiceModel>, IPoliciesProvider<PolicyServiceModel>
     {
-        public PoliciesProvider(string baseUrl, string resourcePath) : base(baseUrl, resourcePath) { }
+        public PoliciesProvider(string baseUrl, string resourcePath) : base(baseUrl, resourcePath)
+        {
+        }
 
         public Task AddAsync(PolicyServiceModel t)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public async Task<List<PolicyServiceModel>> GetAllAsync()
         {
             try
             {
-                var data = await base.GetResourceAsync();
+                var data = await GetResourceAsync();
 
                 var policies = JsonConvert.DeserializeObject<PolicyResponse<PolicyDTO>>(data);
 
-                return AutoMapper.Mapper.Map<List<PolicyServiceModel>>(policies.Policies);
+                return Mapper.Map<List<PolicyServiceModel>>(policies.Policies);
             }
             catch (Exception ex)
             {
@@ -38,7 +41,7 @@ namespace Insurance.ApiProviders.Providers
         {
             try
             {
-                var result = await this.GetAllAsync().ConfigureAwait(false);
+                var result = await GetAllAsync().ConfigureAwait(false);
 
                 return result.Where(c => c.Id != null && c.Id == id).SingleOrDefault();
             }
@@ -49,7 +52,7 @@ namespace Insurance.ApiProviders.Providers
         }
 
         /// <summary>
-        /// Get Policies by client id
+        ///     Get Policies by client id
         /// </summary>
         /// <param name="clientId"></param>
         /// <returns></returns>
@@ -58,7 +61,7 @@ namespace Insurance.ApiProviders.Providers
             try
             {
                 // Without REST operation to get policies by ClientId, get all policies from service and filter out 
-                var allPolicies = await this.GetAllAsync().ConfigureAwait(false);
+                var allPolicies = await GetAllAsync().ConfigureAwait(false);
 
                 var policies = new List<PolicyServiceModel>();
 

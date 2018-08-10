@@ -1,8 +1,7 @@
-﻿
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Insurance.Database.Users
 {

@@ -1,24 +1,24 @@
 using Insurance.ApiProviders.Clients;
-using Insurance.ApiProviders.Providers;
+using Insurance.ApiProviders.Policies;
+using Insurance.Database;
+using Insurance.Database.Roles;
+using Insurance.Database.Users;
 using Insurance.IApiProviders.Clients;
 using Insurance.IApiProviders.Policies;
-using Insurance.IServices.Authentication;
-using Insurance.IServices.Clients;
+using Insurance.IServices.IAuthentication;
+using Insurance.IServices.IClients;
+using Insurance.IServices.ILogging;
+using Insurance.IServices.IPolicies;
 using Insurance.IServices.ServiceModels;
-using Insurance.IServices.Policies;
 using Insurance.Services.Authentication;
-using Insurance.Services.Clients;
 using Insurance.Services.Logging;
+using Insurance.Services.Policies;
+using Insurance.Services.Services.Clients;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Configuration;
 using System.Web.Http;
 using Unity;
 using Unity.Injection;
-using Insurance.IApiProviders.Models;
-using System.Configuration;
-using Insurance.Database.Users;
-using Insurance.Database;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Insurance.Database.Roles;
-using Unity.Lifetime;
 
 namespace Insurance.WebApi
 {

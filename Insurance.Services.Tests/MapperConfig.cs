@@ -2,9 +2,9 @@
 using Insurance.IApiProviders.Models;
 using Insurance.IServices.ServiceModels;
 
-namespace Insurance.WebApi
+namespace Insurance.Services.Test
 {
-    public class MapperConfig : Profile
+    public class MapperConfig
     {
         public static void SetUp()
         {

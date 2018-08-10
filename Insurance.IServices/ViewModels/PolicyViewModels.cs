@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Insurance.IServices.ViewModels
 {
@@ -13,7 +9,7 @@ namespace Insurance.IServices.ViewModels
 
         public string Email { get; set; }
 
-        public System.DateTimeOffset InceptionDate { get; set; }
+        public DateTimeOffset InceptionDate { get; set; }
 
         public bool InstallmentPayment { get; set; }
 

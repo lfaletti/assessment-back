@@ -1,9 +1,8 @@
-﻿using Insurance.IServices.ServiceModels;
-using Insurance.IServices.ViewModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Insurance.IServices.ViewModels;
 
-namespace Insurance.IServices.Clients
+namespace Insurance.IServices.IClients
 {
     public interface IClientService
     {

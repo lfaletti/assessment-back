@@ -1,21 +1,21 @@
-﻿using Insurance.IServices.Policies;
-using Insurance.IServices.ServiceModels;
-using Insurance.WebApi.Handlers;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Insurance.IServices.IPolicies;
+using Insurance.IServices.ServiceModels;
+using Insurance.WebApi.Handlers;
 
-namespace Insurance.WebApi4.Controllers
+namespace Insurance.WebApi.Controllers
 {
     [RoutePrefix("api/insurance/policies")]
     public class PoliciesController : ApiController
     {
+        private readonly IPolicyService _policyService;
 
-        private IPolicyService _policyService;
-
-        public PoliciesController(IPolicyService policyService){
-            this._policyService = policyService;
+        public PoliciesController(IPolicyService policyService)
+        {
+            _policyService = policyService;
         }
 
         [Route("{username}")]
@@ -27,10 +27,7 @@ namespace Insurance.WebApi4.Controllers
             {
                 var client = await _policyService.GetByUsernameAsync(username);
 
-                if (client != null)
-                {
-                    return Ok(client);
-                }
+                if (client != null) return Ok(client);
                 return NotFound();
             }
             catch (Exception ex)
@@ -39,6 +36,5 @@ namespace Insurance.WebApi4.Controllers
                 return NotFound();
             }
         }
-
     }
 }

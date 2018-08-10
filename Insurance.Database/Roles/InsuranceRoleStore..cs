@@ -6,7 +6,6 @@ namespace Insurance.Database.Roles
     {
         public InsuranceRoleStore(InsuranceContext context) : base(context)
         {
-
         }
     }
 }

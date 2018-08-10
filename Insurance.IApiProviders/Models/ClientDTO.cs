@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿
 
 /// <summary>
 /// Models to match with External Api

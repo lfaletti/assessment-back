@@ -4,6 +4,5 @@ namespace Insurance.Database
 {
     public class InsuranceContext : IdentityDbContext
     {
-
     }
 }

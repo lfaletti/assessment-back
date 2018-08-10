@@ -1,12 +1,9 @@
-﻿using Insurance.Services.Logging;
-using System;
-using System.Web.Http;
+﻿using System;
 
 namespace Insurance.WebApi.Handlers
 {
     public static class WebApiExceptionHandler
     {
-
         public static void HandleException(Exception ex)
         {
             // TODO

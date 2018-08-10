@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-
-/// <summary>
-/// Models to match with External Api
-/// </summary>
-namespace Insurance.IServices.ServiceModels
+﻿namespace Insurance.IServices.ServiceModels
 {
     public class ClientServiceModel
     {

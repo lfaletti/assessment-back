@@ -7,11 +7,11 @@ namespace Insurance.Database.Users
 {
     public class InsuranceUserManager : UserManager<IdentityUser>, IInsuranceUserManager<IdentityUser, string>
     {
-        IEnumerable<IdentityUser> IInsuranceUserManager<IdentityUser, string>.Users => base.Users;
-
         public InsuranceUserManager(InsuranceContext context) : base(new InsuranceUserStore(context))
         {
         }
+
+        IEnumerable<IdentityUser> IInsuranceUserManager<IdentityUser, string>.Users => base.Users;
 
 
         public override Task<IdentityUser> FindByNameAsync(string userName)
@@ -21,10 +21,10 @@ namespace Insurance.Database.Users
 
         public IList<string> GetRoles(string userId)
         {
-            return base.GetRolesAsync(userId).Result;
+            return GetRolesAsync(userId).Result;
         }
 
-        public async override Task<IdentityResult> AddToRoleAsync(string id, string role)
+        public override async Task<IdentityResult> AddToRoleAsync(string id, string role)
         {
             return await base.AddToRoleAsync(id, role);
         }

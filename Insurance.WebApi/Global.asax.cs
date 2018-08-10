@@ -1,7 +1,6 @@
 ﻿using System.Web;
 using System.Web.Http;
 using Insurance.Database.Configuration;
-using Insurance.WebApi4.App_Start;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 

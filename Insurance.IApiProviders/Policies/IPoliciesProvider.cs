@@ -1,5 +1,4 @@
-﻿using Insurance.IApiProviders.Providers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Insurance.IApiProviders.Policies

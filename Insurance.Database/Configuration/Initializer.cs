@@ -2,8 +2,7 @@
 
 namespace Insurance.Database.Configuration
 {
-    public class Initializer : MigrateDatabaseToLatestVersion<InsuranceContext,DbConfiguration>
+    public class Initializer : MigrateDatabaseToLatestVersion<InsuranceContext, DbConfiguration>
     {
-
     }
 }

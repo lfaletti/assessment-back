@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 /// <summary>
 /// Models to match with External Api
@@ -14,12 +14,10 @@ namespace Insurance.IServices.ServiceModels
 
         public string Email { get; set; }
 
-        public System.DateTimeOffset InceptionDate { get; set; }
+        public DateTimeOffset InceptionDate { get; set; }
 
         public bool InstallmentPayment { get; set; }
 
         public string ClientId { get; set; }
-
     }
-
 }

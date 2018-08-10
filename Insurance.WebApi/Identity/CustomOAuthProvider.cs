@@ -14,22 +14,24 @@ namespace Insurance.WebApi.Identity
     {
         public override Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] {"*"});
 
-            var user = context.OwinContext.Get<InsuranceContext>().Users.FirstOrDefault(u => u.UserName == context.UserName);
+            var user = context.OwinContext.Get<InsuranceContext>().Users
+                .FirstOrDefault(u => u.UserName == context.UserName);
             if (user == null)
             {
                 context.SetError("invalid_grant", "The user name or password is incorrect");
                 context.Rejected();
-                return Task.FromResult<string>("The user name or password is incorrect");
+                return Task.FromResult("The user name or password is incorrect");
             }
 
-            var loginResult =  context.OwinContext.Get<AuthenticationService>().Authenticate(user.UserName, context.Password).Result;
+            var loginResult = context.OwinContext.Get<AuthenticationService>()
+                .Authenticate(user.UserName, context.Password).Result;
             if (!loginResult)
             {
                 context.SetError("invalid_grant", "The user name or password is incorrect");
                 context.Rejected();
-                return Task.FromResult<string>("The user name or password is incorrect");
+                return Task.FromResult("The user name or password is incorrect");
             }
 
             var ticket = new AuthenticationTicket(SetClaimsIdentity(context, user), new AuthenticationProperties());
@@ -44,17 +46,15 @@ namespace Insurance.WebApi.Identity
             return Task.FromResult<object>(null);
         }
 
-        private static ClaimsIdentity SetClaimsIdentity(OAuthGrantResourceOwnerCredentialsContext context, IdentityUser user)
+        private static ClaimsIdentity SetClaimsIdentity(OAuthGrantResourceOwnerCredentialsContext context,
+            IdentityUser user)
         {
             var identity = new ClaimsIdentity("JWT");
             identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
             identity.AddClaim(new Claim("sub", context.UserName));
 
             var userRoles = context.OwinContext.Get<AuthenticationService>().GetRoles(user.Id).Result;
-            foreach (var role in userRoles)
-            {
-                identity.AddClaim(new Claim(ClaimTypes.Role, role));
-            }
+            foreach (var role in userRoles) identity.AddClaim(new Claim(ClaimTypes.Role, role));
 
             return identity;
         }

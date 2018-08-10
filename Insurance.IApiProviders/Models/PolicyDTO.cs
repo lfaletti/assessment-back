@@ -2,6 +2,9 @@
 /// Models to match with External Api
 /// </summary>
 /// 
+
+using System;
+
 namespace Insurance.IApiProviders.Models
 {
     public class PolicyDTO
@@ -12,11 +15,10 @@ namespace Insurance.IApiProviders.Models
 
         public string Email { get; set; }
 
-        public System.DateTimeOffset InceptionDate { get; set; }
+        public DateTimeOffset InceptionDate { get; set; }
 
         public bool InstallmentPayment { get; set; }
 
         public string ClientId { get; set; }
-
     }
 }

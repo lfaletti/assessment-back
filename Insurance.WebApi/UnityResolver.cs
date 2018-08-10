@@ -1,7 +1,7 @@
-﻿using Insurance.WebApi.Handlers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Web.Http.Dependencies;
+using Insurance.WebApi.Handlers;
 using Unity;
 using Unity.Exceptions;
 
@@ -13,10 +13,7 @@ namespace Insurance.WebApi
 
         public UnityResolver(IUnityContainer container)
         {
-            if (container == null)
-            {
-                throw new ArgumentNullException("container");
-            }
+            if (container == null) throw new ArgumentNullException("container");
             this.container = container;
         }
 

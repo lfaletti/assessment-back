@@ -1,18 +1,16 @@
-﻿using Insurance.IApiProviders.Providers;
-using Newtonsoft.Json;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Insurance.ApiProviders
 {
     /// <summary>
-    ///  A generic Base class to get insurance REST external resources
+    ///     A generic Base class to get insurance REST external resources
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class ApiDataProviderBase<T>
     {
-        private string _baseUrl;
-        private string _resourcePath;
+        private readonly string _baseUrl;
+        private readonly string _resourcePath;
 
         public ApiDataProviderBase(string baseUrl, string resourcePath)
         {
@@ -27,9 +25,9 @@ namespace Insurance.ApiProviders
 
             using (var httpClient = new HttpClient())
             {
-                
                 return await httpClient.GetStringAsync(url)
-                    .ConfigureAwait(false); ;
+                    .ConfigureAwait(false);
+                ;
             }
         }
     }

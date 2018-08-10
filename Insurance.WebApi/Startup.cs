@@ -2,11 +2,11 @@
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(Insurance.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
-namespace Insurance
+namespace Insurance.WebApi
 {
-    public partial class Startup
+    public class Startup
     {
         public void Configuration(IAppBuilder app)
         {

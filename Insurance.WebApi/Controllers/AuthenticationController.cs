@@ -1,14 +1,15 @@
-﻿using Insurance.IServices.Authentication;
+﻿using System.Threading.Tasks;
+using System.Web.Http;
+using Insurance.IServices.IAuthentication;
 using Insurance.WebApi.Models.Authentication;
 using Microsoft.AspNet.Identity;
-using System.Threading.Tasks;
-using System.Web.Http;
+
 namespace Insurance.WebApi.Controllers
 {
     [RoutePrefix("api/auth")]
     public class AuthenticationController : ApiController
     {
-        private IAuthenticationService _authenticationService;
+        private readonly IAuthenticationService _authenticationService;
 
         public AuthenticationController(IAuthenticationService authenticationService)
         {
@@ -24,7 +25,7 @@ namespace Insurance.WebApi.Controllers
         }
 
         /// <summary>
-        /// Ping method to test authenticated user.
+        ///     Ping method to test authenticated user.
         /// </summary>
         /// <returns></returns>
         [Authorize]
@@ -40,10 +41,7 @@ namespace Insurance.WebApi.Controllers
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegistrationModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var result = await _authenticationService.Register(model.UserName, model.Password);
 
@@ -51,31 +49,20 @@ namespace Insurance.WebApi.Controllers
         }
 
 
-
         protected IHttpActionResult HandleResult(IdentityResult result)
         {
-            if (result == null)
-            {
-                return InternalServerError();
-            }
+            if (result == null) return InternalServerError();
 
             if (!result.Succeeded)
             {
                 if (result.Errors != null)
-                {
-                    foreach (string error in result.Errors)
-                    {
+                    foreach (var error in result.Errors)
                         ModelState.AddModelError("", error);
-                    }
-                }
 
-                if (ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
+                if (ModelState.IsValid) return BadRequest();
             }
+
             return Ok();
         }
-
     }
 }

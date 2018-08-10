@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Insurance.IServices.ViewModels
+﻿namespace Insurance.IServices.ViewModels
 {
     public class ClientViewModel
     {

@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.Web.Http;
 using Insurance.Database;
-using Insurance.IServices.Authentication;
 using Insurance.Services.Authentication;
 using Insurance.WebApi.Identity;
 using Microsoft.Owin;
@@ -21,8 +20,12 @@ namespace Insurance.WebApi
             var issuer = ConfigurationManager.AppSettings["issuer"];
             var secret = TextEncodings.Base64Url.Decode(ConfigurationManager.AppSettings["secret"]);
 
-            app.CreatePerOwinContext(() => (InsuranceContext) GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(InsuranceContext)));
-            app.CreatePerOwinContext(() => (AuthenticationService)GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(AuthenticationService)));
+            app.CreatePerOwinContext(() =>
+                (InsuranceContext) GlobalConfiguration.Configuration.DependencyResolver.GetService(
+                    typeof(InsuranceContext)));
+            app.CreatePerOwinContext(() =>
+                (AuthenticationService) GlobalConfiguration.Configuration.DependencyResolver.GetService(
+                    typeof(AuthenticationService)));
 
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
             {
@@ -36,14 +39,12 @@ namespace Insurance.WebApi
             app.UseJwtBearerAuthentication(new JwtBearerAuthenticationOptions
             {
                 AuthenticationMode = AuthenticationMode.Active,
-                AllowedAudiences = new[] { "Any" },
+                AllowedAudiences = new[] {"Any"},
                 IssuerSecurityKeyProviders = new IIssuerSecurityKeyProvider[]
                 {
                     new SymmetricKeyIssuerSecurityKeyProvider(issuer, secret)
                 }
             });
-
-
         }
     }
 }

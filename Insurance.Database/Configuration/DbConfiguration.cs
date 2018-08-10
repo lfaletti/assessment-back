@@ -2,7 +2,6 @@
 
 namespace Insurance.Database.Configuration
 {
-
     public class DbConfiguration : DbMigrationsConfiguration<InsuranceContext>
     {
         public DbConfiguration()
