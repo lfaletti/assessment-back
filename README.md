@@ -8,4 +8,4 @@ Developed with Visual Studio 2017.
 2) Set as startup project "Insurance WebApi".
 3) Run/Debug
 
-Wait for database intialization on the first registration and voila!
+Wait for database intialization on the first user request and voila!
