@@ -1,4 +1,4 @@
-# Backend exercise for Isurance Services
+# Backend exercise for Insurance Services
 
 Developed with Visual Studio 2017.
 
