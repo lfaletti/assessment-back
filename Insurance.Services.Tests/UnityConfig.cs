@@ -11,7 +11,7 @@ using Insurance.IServices.ServiceModels;
 using Insurance.Services.Authentication;
 using Insurance.Services.Logging;
 using Insurance.Services.Policies;
-using Insurance.Services.Services.Clients;
+using Insurance.Services.Clients;
 using Unity;
 using Unity.Injection;
 
