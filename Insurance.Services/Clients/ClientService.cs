@@ -7,7 +7,7 @@ using Insurance.IServices.IClients;
 using Insurance.IServices.ServiceModels;
 using Insurance.IServices.ViewModels;
 
-namespace Insurance.Services.Services.Clients
+namespace Insurance.Services.Clients
 {
     public class ClientService : IClientService
     {
