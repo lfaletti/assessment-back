@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Insurance.IApiProviders.Models;
-using Insurance.IServices.ServiceModels;
+using Insurance.ApiProviders.Models;
 
-namespace Insurance.Services.Test
+namespace Insurance.ApiProviders.Test
 {
     public class MapperConfig
     {

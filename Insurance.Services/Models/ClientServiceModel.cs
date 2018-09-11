@@ -1,6 +1,6 @@
-﻿namespace Insurance.IServices.ViewModels
+﻿namespace Insurance.ApiProviders.Models
 {
-    public class ClientViewModel
+    public class ClientServiceModel
     {
         public string Id { get; set; }
 

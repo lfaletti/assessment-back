@@ -4,20 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Insurance.Database.Roles;
 using Insurance.Database.Users;
-using Insurance.IServices.IAuthentication;
-using Insurance.IServices.IClients;
+using Insurance.ApiProviders.Identity;
+using Insurance.ApiProviders.IClients;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace Insurance.Services.Authentication
+namespace Insurance.Database.Services.Identity
 {
-    public class AuthenticationService : IAuthenticationService, IDisposable
+    public class IdentityService : IIdentityService, IDisposable
     {
         private readonly IClientService _clientService;
         private readonly IInsuranceRoleManager _roleManager;
         private readonly IInsuranceUserManager<IdentityUser, string> _userManager;
 
-        public AuthenticationService(IClientService clientService,
+        public IdentityService(IClientService clientService,
             IInsuranceUserManager<IdentityUser, string> userManager,
             IInsuranceRoleManager roleManager)
         {

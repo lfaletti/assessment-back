@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Insurance.IServices.IPolicies;
-using Insurance.IServices.ServiceModels;
+using Insurance.ApiProviders.IPolicies;
+using Insurance.ApiProviders.Models;
 using Insurance.WebApi.Handlers;
 
 namespace Insurance.WebApi.Controllers

@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insurance.Database", "Insur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insurance.WebApi", "Insurance.WebApi\Insurance.WebApi.csproj", "{A135787C-1B81-4556-A74A-8AAA5203F702}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insurance.IServices", "Insurance.IServices\Insurance.IServices.csproj", "{284AEDB2-C5B0-4B8F-ADA4-2DDB65F247ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insurance.Interfaces", "Insurance.IServices\Insurance.Interfaces.csproj", "{284AEDB2-C5B0-4B8F-ADA4-2DDB65F247ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insurance.IApiProviders", "Insurance.IApiProviders\Insurance.IApiProviders.csproj", "{AA052E5E-831E-489C-BBB1-78A5F200E8F9}"
 EndProject

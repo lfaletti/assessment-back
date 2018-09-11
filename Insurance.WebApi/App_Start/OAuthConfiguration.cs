@@ -1,8 +1,5 @@
-﻿using System;
-using System.Configuration;
-using System.Web.Http;
-using Insurance.Database;
-using Insurance.Services.Authentication;
+﻿using Insurance.Database;
+using Insurance.Database.Services.Identity;
 using Insurance.WebApi.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
@@ -10,6 +7,9 @@ using Microsoft.Owin.Security.DataHandler.Encoder;
 using Microsoft.Owin.Security.Jwt;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
+using System;
+using System.Configuration;
+using System.Web.Http;
 
 namespace Insurance.WebApi
 {
@@ -24,8 +24,8 @@ namespace Insurance.WebApi
                 (InsuranceContext) GlobalConfiguration.Configuration.DependencyResolver.GetService(
                     typeof(InsuranceContext)));
             app.CreatePerOwinContext(() =>
-                (AuthenticationService) GlobalConfiguration.Configuration.DependencyResolver.GetService(
-                    typeof(AuthenticationService)));
+                (IdentityService) GlobalConfiguration.Configuration.DependencyResolver.GetService(
+                    typeof(IdentityService)));
 
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
             {

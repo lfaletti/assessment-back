@@ -1,21 +1,21 @@
-﻿using System.Configuration;
-using Insurance.ApiProviders.Clients;
+﻿using Insurance.ApiProviders.Clients;
 using Insurance.ApiProviders.Policies;
+using Insurance.Database.Services.Identity;
 using Insurance.IApiProviders.Clients;
 using Insurance.IApiProviders.Policies;
-using Insurance.IServices.IAuthentication;
-using Insurance.IServices.IClients;
-using Insurance.IServices.ILogging;
-using Insurance.IServices.IPolicies;
-using Insurance.IServices.ServiceModels;
-using Insurance.Services.Authentication;
-using Insurance.Services.Logging;
-using Insurance.Services.Policies;
-using Insurance.Services.Clients;
+using Insurance.ApiProviders.Identity;
+using Insurance.ApiProviders.IClients;
+using Insurance.ApiProviders.ILogging;
+using Insurance.ApiProviders.IPolicies;
+using Insurance.ApiProviders.Models;
+using Insurance.ApiProviders.Clients;
+using Insurance.ApiProviders.Logging;
+using Insurance.ApiProviders.Policies;
+using System.Configuration;
 using Unity;
 using Unity.Injection;
 
-namespace Insurance.Services.Test
+namespace Insurance.ApiProviders.Test
 {
     public class UnityConfig
     {
@@ -23,7 +23,7 @@ namespace Insurance.Services.Test
         {
             IUnityContainer container = new UnityContainer();
 
-            container.RegisterType<IAuthenticationService, AuthenticationService>();
+            container.RegisterType<IIdentityService, IdentityService>();
             container.RegisterType<ILogService, LogService>();
 
             container.RegisterType<IClientsProvider<ClientServiceModel>,

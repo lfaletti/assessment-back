@@ -1,7 +1,7 @@
 ﻿using System;
-using Insurance.IServices.ILogging;
+using Insurance.ApiProviders.ILogging;
 
-namespace Insurance.Services.Logging
+namespace Insurance.ApiProviders.Logging
 {
     /// <summary>
     ///     Implement some logging...

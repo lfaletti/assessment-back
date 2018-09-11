@@ -1,8 +1,8 @@
-﻿using Insurance.IServices.IPolicies;
+﻿using Insurance.ApiProviders.IPolicies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unity;
 
-namespace Insurance.Services.Test.Policies
+namespace Insurance.ApiProviders.Test.Policies
 {
     /// <summary>
     ///     Summary description for PolicyServiceTests

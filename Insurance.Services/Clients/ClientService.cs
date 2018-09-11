@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Insurance.IApiProviders.Clients;
 using Insurance.IApiProviders.Policies;
-using Insurance.IServices.IClients;
-using Insurance.IServices.ServiceModels;
-using Insurance.IServices.ViewModels;
+using Insurance.ApiProviders.IClients;
+using Insurance.ApiProviders.Models;
+using Insurance.ApiProviders.ViewModels;
 
-namespace Insurance.Services.Clients
+namespace Insurance.ApiProviders.Clients
 {
     public class ClientService : IClientService
     {

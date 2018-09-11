@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Insurance.IServices.ViewModels;
+using Insurance.ApiProviders.ViewModels;
 
-namespace Insurance.IServices.IPolicies
+namespace Insurance.ApiProviders.IPolicies
 {
     public interface IPolicyService
     {

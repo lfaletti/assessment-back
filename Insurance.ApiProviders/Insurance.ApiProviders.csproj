@@ -48,6 +48,8 @@
     <Compile Include="Clients\ClientDataProvider.cs" />
     <Compile Include="Policies\PolicyDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ClientViewModels.cs" />
+    <Compile Include="ViewModels\PolicyViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -57,9 +59,9 @@
       <Project>{aa052e5e-831e-489c-bbb1-78a5f200e8f9}</Project>
       <Name>Insurance.IApiProviders</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Insurance.IServices\Insurance.IServices.csproj">
+    <ProjectReference Include="..\Insurance.IServices\Insurance.Interfaces.csproj">
       <Project>{284AEDB2-C5B0-4B8F-ADA4-2DDB65F247ED}</Project>
-      <Name>Insurance.IServices</Name>
+      <Name>Insurance.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

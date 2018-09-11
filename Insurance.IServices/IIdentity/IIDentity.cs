@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 
-namespace Insurance.IServices.IAuthentication
+namespace Insurance.ApiProviders.Identity
 {
-    public interface IAuthenticationService
+    public interface IIdentityService
     {
         Task<bool> Authenticate(string user, string password);
         Task<IdentityResult> Register(string userName, string password);

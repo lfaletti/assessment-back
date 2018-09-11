@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Insurance.IApiProviders.Clients;
 using Insurance.IApiProviders.Models;
-using Insurance.IServices.ServiceModels;
+using Insurance.ApiProviders.ServiceModels;
 using Newtonsoft.Json;
+using Insurance.ApiProviders.ViewModels;
 
 namespace Insurance.ApiProviders.Clients
 {
-    public class ClientDataProvider<T> : ApiDataProviderBase<ClientServiceModel>, IClientsProvider<ClientServiceModel>
+    public class ClientDataProvider<T> : ApiDataProviderBase<ClientViewModel>, IClientsProvider<ClientServiceModel>
     {
         public ClientDataProvider(string baseUrl, string resourcePath) : base(baseUrl, resourcePath)
         {

@@ -94,13 +94,17 @@
       <Project>{205fe14e-ede3-4c48-8428-b563378b9422}</Project>
       <Name>Insurance.ApiProviders</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Insurance.Database\Insurance.Database.csproj">
+      <Project>{D1FBCD2E-0EE0-479A-AF50-79A985D64AAE}</Project>
+      <Name>Insurance.Database</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Insurance.IApiProviders\Insurance.IApiProviders.csproj">
       <Project>{aa052e5e-831e-489c-bbb1-78a5f200e8f9}</Project>
       <Name>Insurance.IApiProviders</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Insurance.IServices\Insurance.IServices.csproj">
+    <ProjectReference Include="..\Insurance.IServices\Insurance.Interfaces.csproj">
       <Project>{284aedb2-c5b0-4b8f-ada4-2ddb65f247ed}</Project>
-      <Name>Insurance.IServices</Name>
+      <Name>Insurance.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Insurance.Services\Insurance.Services.csproj">
       <Project>{3adac17f-7e3f-45c9-9dc7-998c09277554}</Project>

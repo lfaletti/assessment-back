@@ -1,10 +1,11 @@
 ﻿using System;
 
-namespace Insurance.IServices.ViewModels
+namespace Insurance.ApiProviders.Models
 {
-    public class PolicyViewModel
+    public class PolicyServiceModel
     {
         public string Id { get; set; }
+
         public double AmountInsured { get; set; }
 
         public string Email { get; set; }

@@ -1,8 +1,8 @@
-﻿using Insurance.IServices.IClients;
+﻿using Insurance.ApiProviders.IClients;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unity;
 
-namespace Insurance.Services.Test.Clients
+namespace Insurance.ApiProviders.Test.Clients
 {
     [TestClass]
     public class ClientServiceTests

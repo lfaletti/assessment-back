@@ -1,15 +1,10 @@
 ﻿using System;
 
-/// <summary>
-/// Models to match with External Api
-/// </summary>
-/// 
-namespace Insurance.IServices.ServiceModels
+namespace Insurance.ApiProviders.ViewModels
 {
-    public class PolicyServiceModel
+    public class PolicyViewModel
     {
         public string Id { get; set; }
-
         public double AmountInsured { get; set; }
 
         public string Email { get; set; }

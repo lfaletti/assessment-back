@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Insurance.IApiProviders.Models;
-using Insurance.IServices.ServiceModels;
+using Insurance.ApiProviders.Models;
 
 namespace Insurance.WebApi
 {

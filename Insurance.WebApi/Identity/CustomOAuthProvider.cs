@@ -1,12 +1,12 @@
-﻿using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Insurance.Database;
-using Insurance.Services.Authentication;
+﻿using Insurance.Database;
+using Insurance.Database.Services.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Insurance.WebApi.Identity
 {
@@ -25,7 +25,7 @@ namespace Insurance.WebApi.Identity
                 return Task.FromResult("The user name or password is incorrect");
             }
 
-            var loginResult = context.OwinContext.Get<AuthenticationService>()
+            var loginResult = context.OwinContext.Get<IdentityService>()
                 .Authenticate(user.UserName, context.Password).Result;
             if (!loginResult)
             {
@@ -53,7 +53,7 @@ namespace Insurance.WebApi.Identity
             identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
             identity.AddClaim(new Claim("sub", context.UserName));
 
-            var userRoles = context.OwinContext.Get<AuthenticationService>().GetRoles(user.Id).Result;
+            var userRoles = context.OwinContext.Get<IdentityService>().GetRoles(user.Id).Result;
             foreach (var role in userRoles) identity.AddClaim(new Claim(ClaimTypes.Role, role));
 
             return identity;

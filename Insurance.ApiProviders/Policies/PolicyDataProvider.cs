@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Insurance.IApiProviders.Models;
 using Insurance.IApiProviders.Policies;
-using Insurance.IServices.ServiceModels;
+using Insurance.ApiProviders.ServiceModels;
 using Newtonsoft.Json;
 
 namespace Insurance.ApiProviders.Policies

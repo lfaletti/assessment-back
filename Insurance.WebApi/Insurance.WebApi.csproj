@@ -214,9 +214,9 @@
       <Project>{aa052e5e-831e-489c-bbb1-78a5f200e8f9}</Project>
       <Name>Insurance.IApiProviders</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Insurance.IServices\Insurance.IServices.csproj">
+    <ProjectReference Include="..\Insurance.IServices\Insurance.Interfaces.csproj">
       <Project>{284aedb2-c5b0-4b8f-ada4-2ddb65f247ed}</Project>
-      <Name>Insurance.IServices</Name>
+      <Name>Insurance.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Insurance.Services\Insurance.Services.csproj">
       <Project>{3ADAC17F-7E3F-45C9-9DC7-998C09277554}</Project>
